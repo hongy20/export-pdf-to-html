@@ -3,3 +3,7 @@ default:
 
 run-node-poppler:
     node src/node-poppler.js
+
+clean:
+    rm -rf html
+    mkdir html

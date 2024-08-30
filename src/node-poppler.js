@@ -1,19 +1,40 @@
 const { Poppler } = require("node-poppler");
+const { exec } = require("child_process");
 
-const file = "example/HS#40_Digital.pdf";
-const poppler = new Poppler();
-const options = {
-  firstPageToConvert: 3,
-  lastPageToConvert: 3,
-  complexOutput: true,
-};
+const inputFolder = "pdf";
+const outputFolder = "html";
 
-poppler
-  .pdfToHtml(file, "output/HS.html", options)
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => {
-    console.error(err);
-    throw err;
-  });
+const samples = [
+  {
+    filename: "boneshaker",
+    pageNumber: 3,
+  },
+  {
+    filename: "HS_40_Digital",
+    pageNumber: 3,
+  },
+];
+
+samples.forEach(({ filename, pageNumber }) => {
+  const poppler = new Poppler();
+  const options = {
+    firstPageToConvert: pageNumber,
+    lastPageToConvert: pageNumber,
+    complexOutput: true,
+  };
+
+  poppler
+    .pdfToHtml(
+      `${inputFolder}/${filename}.pdf`,
+      `${outputFolder}/${filename}.html`,
+      options
+    )
+    .then((res) => {
+      console.log(res);
+      exec(`open ${outputFolder}/${filename}.html`);
+    })
+    .catch((err) => {
+      console.error(err);
+      throw err;
+    });
+});
