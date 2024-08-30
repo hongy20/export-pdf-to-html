@@ -21,6 +21,7 @@ samples.forEach(({ filename, pageNumber }) => {
     firstPageToConvert: pageNumber,
     lastPageToConvert: pageNumber,
     complexOutput: true,
+    // dataUrls: true,
   };
 
   poppler
