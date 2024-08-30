@@ -5,6 +5,7 @@ const poppler = new Poppler();
 const options = {
   firstPageToConvert: 3,
   lastPageToConvert: 3,
+  complexOutput: true,
 };
 
 poppler
