@@ -11,3 +11,9 @@ https://www.npmjs.com/package/node-poppler
 * With option `complexOutput`, it can preserve the original layout with css;
 * It provides an option to "use data URLs instead of external images in HTML", but enabling this option will end up crashing;
 * Fonts are not extracted, so the layout will look different than the original pdf;
+
+## pdf2htmlEX
+
+https://github.com/pdf2htmlEX/pdf2htmlEX
+
+### Learnings
