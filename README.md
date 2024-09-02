@@ -1,4 +1,8 @@
-This project explores various tools for converting pdf to html/css
+This project explores various tools for converting pdf to html/css. The evaluation is based on the following perspectives:
+* Pixel perfect;
+* Accessibility;
+* Link integration;
+* Foot print;
 
 ## How to run
 
