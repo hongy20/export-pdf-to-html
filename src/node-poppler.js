@@ -21,7 +21,7 @@ samples.forEach(({ filename, pageNumber }) => {
     firstPageToConvert: pageNumber,
     lastPageToConvert: pageNumber,
     complexOutput: true,
-    // dataUrls: true,
+    // dataUrls: true, this will throw error 🤷‍♂️
   };
 
   poppler
@@ -30,12 +30,30 @@ samples.forEach(({ filename, pageNumber }) => {
       `${outputFolder}/${filename}.html`,
       options
     )
-    .then((res) => {
+    .then(res => {
       console.log(res);
       exec(`open ${outputFolder}/${filename}.html`);
-    })
-    .catch((err) => {
-      console.error(err);
-      throw err;
+    });
+
+  // poppler
+  //   .pdfFonts(`${inputFolder}/${filename}.pdf`, {
+  //     firstPageToExamine: pageNumber,
+  //     lastPageToExamine: pageNumber,
+  //   })
+  //   .then(console.log);
+
+  poppler
+    .pdfToCairo(
+      `${inputFolder}/${filename}.pdf`,
+      `${outputFolder}/${filename}.svg`,
+      {
+        firstPageToConvert: pageNumber,
+        lastPageToConvert: pageNumber,
+        svgFile: true,
+      }
+    )
+    .then(res => {
+      console.log(res);
+      exec(`open ${outputFolder}/${filename}.svg`);
     });
 });
