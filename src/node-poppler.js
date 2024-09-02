@@ -1,8 +1,13 @@
 const { Poppler } = require("node-poppler");
 const { exec } = require("child_process");
+const fs = require("node:fs");
 
 const inputFolder = "pdf";
 const outputFolder = "html";
+
+if (!fs.existsSync(outputFolder)) {
+  fs.mkdirSync(outputFolder);
+}
 
 const samples = [
   {
@@ -30,7 +35,7 @@ samples.forEach(({ filename, pageNumber }) => {
       `${outputFolder}/${filename}.html`,
       options
     )
-    .then(res => {
+    .then((res) => {
       console.log(res);
       exec(`open ${outputFolder}/${filename}.html`);
     });
@@ -52,8 +57,5 @@ samples.forEach(({ filename, pageNumber }) => {
         svgFile: true,
       }
     )
-    .then(res => {
-      console.log(res);
-      exec(`open ${outputFolder}/${filename}.svg`);
-    });
+    .then(console.log);
 });

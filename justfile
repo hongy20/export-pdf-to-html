@@ -6,4 +6,3 @@ run-node-poppler:
 
 clean:
     rm -rf html
-    mkdir html
