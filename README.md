@@ -1,4 +1,18 @@
-This project experience various tools for converting pdf to html/css
+This project explores various tools for converting pdf to html/css
+
+## How to run
+
+```cmd
+# Clean up the workspace
+just clean
+
+# Install
+brew install poppler
+yarn
+
+# Run the experiments with node-poppler
+just run-node-poppler
+```
 
 ## node-poppler
 
